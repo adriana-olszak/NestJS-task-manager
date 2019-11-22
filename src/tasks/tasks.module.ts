@@ -7,9 +7,7 @@ import { AuthModule } from '../auth/auth.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([
-      TasksRepository,
-    ]),
+    TypeOrmModule.forFeature([TasksRepository]),
     AuthModule, // every module export is imported
   ],
   controllers: [TasksController],

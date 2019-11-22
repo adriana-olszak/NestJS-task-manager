@@ -17,13 +17,12 @@ import { JwtStrategy } from './jsw.strategy';
         expiresIn: 3600,
       },
     }),
-    TypeOrmModule.forFeature([UserRepository])],
-  controllers: [AuthController],
-  providers: [
-    AuthService,
-    JwtStrategy,
+    TypeOrmModule.forFeature([UserRepository]),
   ],
-  exports: [ // makes accessible for other modules
+  controllers: [AuthController],
+  providers: [AuthService, JwtStrategy],
+  exports: [
+    // makes accessible for other modules
     JwtStrategy,
     PassportModule,
   ],

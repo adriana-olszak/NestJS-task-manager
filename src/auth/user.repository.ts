@@ -53,14 +53,15 @@ export class UserRepository extends Repository<User> {
     }
   }
 
-  async validateUserPassword(authCredentialsDto: AuthCredentialsDto): Promise<string> {
+  async validateUserPassword(
+    authCredentialsDto: AuthCredentialsDto,
+  ): Promise<string> {
     const { username, password } = authCredentialsDto;
     const user = await this.findOne({ username });
-    if (user && await user.validatePassword(password)) {
+    if (user && (await user.validatePassword(password))) {
       return user.username;
     } else {
       return null;
     }
-
   }
 }
